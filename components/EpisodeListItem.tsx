@@ -1,8 +1,10 @@
 import { EpisodeDTO } from "@/mappers/episodesMapper";
-import Pagination from "./Pagination";
+import EpisodeCard from "./EpisodeCard";
+import List from "./ui/list/List";
+import { ListContent, ListPagination, ListTitle } from "./ui/list";
 
 export interface EpisodesListItemProps {
-    characterName: string;
+    characterName: string | undefined;
     data: EpisodeDTO[];
     loading: boolean;
     page: number;
@@ -12,6 +14,8 @@ export interface EpisodesListItemProps {
     hasNext: boolean;
     next: () => void;
     prev: () => void;
+    emptyMessage?: string;
+    isSharedEpisodes?: boolean;
 }
 
 export default function EpisodeListItem({
@@ -25,6 +29,8 @@ export default function EpisodeListItem({
     hasNext,
     next,
     prev,
+    emptyMessage = "No episodes found",
+    isSharedEpisodes = false,
 }: EpisodesListItemProps) {
 
     const paginationData = {
@@ -37,23 +43,31 @@ export default function EpisodeListItem({
         isLoading: loading,
     }
 
+    const title = isSharedEpisodes 
+        ? (characterName || 'Episodios Compartidos')
+        : (characterName ? `Episodios de ${characterName}` : 'Personaje sin seleccionar');
+
+    const subtitle = totalEpisodes > 0 
+        ? `Total: ${totalEpisodes} episodios | Página ${page} de ${totalPages}` 
+        : undefined;
+
     return (
-        <div className="flex flex-col border border-indigo-600 p-10">
-            <h1 className="font-bold">Episode List Character:{characterName}</h1>
-            <p className="mb-2 text-sm text-gray-600">
-                Total episodios: {totalEpisodes} | Mostrando página {page} de {totalPages}
-            </p>
-            <ul>
-                {data?.map((ep: any, index: number) => (
-                    <li key={index} className="border-t-4 border-indigo-600">
-                        <p>name capitulo: {ep.name}</p>
-                        <p>air date: {ep.airDate}</p>
-                    </li>
+        <List>
+            <ListTitle
+                title={title}
+                subtitle={subtitle}
+            />
+            <ListContent emptyMessage={emptyMessage}>
+                {data?.map((ep: any) => (
+                    <EpisodeCard
+                        key={ep.id} 
+                        episodeName={ep.name} 
+                        episodeAirDate={ep.airDate}
+                        episodeId={ep.id}
+                    />
                 ))}
-            </ul>
-            <div className="flex items-center justify-center gap-4">
-                <Pagination {...paginationData} />
-            </div>
-        </div>
+            </ListContent>
+            <ListPagination {...paginationData} />
+        </List>
     )
 }

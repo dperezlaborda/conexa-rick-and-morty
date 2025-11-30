@@ -1,5 +1,6 @@
 import { getCharacters } from "@/services/characters";
 import { mapCharactersToDTO } from "@/mappers/charactersMapper";
+import { CHARACTERS_PER_PAGE } from "@/constants/api";
 
 export async function fetchCharacterSummary(page: string = '1') {
 
@@ -9,12 +10,15 @@ export async function fetchCharacterSummary(page: string = '1') {
         throw new Error('Error al obtener personajes');
     }
 
-    // ✅ Mapea raw.results, no raw
     const dto = mapCharactersToDTO(raw.results);
+    const limitedResults = dto.slice(0, CHARACTERS_PER_PAGE);
 
     return {
-        info: raw.info,
-        results: dto,
+        info: {
+            ...raw.info,
+            count: limitedResults.length,
+        },
+        results: limitedResults,
     };
 
 }

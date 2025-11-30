@@ -7,6 +7,7 @@ export function useShareEpisodesFacade(character1: any, character2: any) {
     const [page, setPage] = useState(1);
     const [loading, setLoading] = useState(false);
     const [sharedUrls, setSharedUrls] = useState<string[]>([]);
+    const [noData, setNoData] = useState<string>('');
 
     const totalPages = sharedUrls.length > 0 
         ? getTotalPages(sharedUrls.length, PAGE_SIZE)
@@ -17,12 +18,19 @@ export function useShareEpisodesFacade(character1: any, character2: any) {
             setSharedUrls([]);
             setData([]);
             setPage(1);
+            setNoData('');
             return;
         }
 
         const urls = findSharedEpisodeUrls(character1.episode, character2.episode);
         setSharedUrls(urls);
         setPage(1);
+
+        if (urls.length === 0) {
+            setNoData(`${character1.name} y ${character2.name} no comparten episodios`);
+        } else {
+            setNoData('');
+        }
 
     }, [character1, character2]);
 
@@ -49,6 +57,7 @@ export function useShareEpisodesFacade(character1: any, character2: any) {
 
                 const episodes = await response.json();
                 setData(episodes);
+
             } catch (error) {
                 console.error('Error fetching shared episodes:', error);
                 setData([]);
@@ -69,6 +78,7 @@ export function useShareEpisodesFacade(character1: any, character2: any) {
         hasPrev: page > 1,
         hasNext: totalPages > 0 && page < totalPages,
         next: () => setPage(p => p + 1),
-        prev: () => setPage(p => p - 1)
+        prev: () => setPage(p => p - 1),
+        noData
     };
 }

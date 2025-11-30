@@ -1,3 +1,4 @@
+import { PAGE_SIZE } from "@/constants/api";
 import { extractEpisodeIds, getTotalPages, paginateArray } from "@/services/episodes";
 import { useEffect, useState } from "react";
 
@@ -9,7 +10,7 @@ export function useEpisodesFacade(character: any){
     //TO-DO: VER SI ES AL PEDO EL AS STRING de episodeUrlsForPage
 
     const totalPages = character?.episode 
-        ? getTotalPages(character.episode.length, 10) 
+        ? getTotalPages(character.episode.length, PAGE_SIZE) 
         : 0;
     
     const totalEpisodes = character?.episode?.length || 0;
@@ -29,7 +30,7 @@ export function useEpisodesFacade(character: any){
 
         async function fetchPage() {
             setLoading(true);
-            const episodeUrlsForPage = paginateArray(character.episode, page, 10) as string[];
+            const episodeUrlsForPage = paginateArray(character.episode, page, PAGE_SIZE) as string[];
             const ids = extractEpisodeIds(episodeUrlsForPage);
 
             const response = await fetch('/api/episodes', {

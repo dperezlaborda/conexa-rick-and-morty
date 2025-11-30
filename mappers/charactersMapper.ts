@@ -3,6 +3,8 @@ export interface CharactersDTO {
     name: string;
     status: string;
     species: string;
+    image: string;
+    episode?: string[];
 }
 
 
@@ -13,6 +15,8 @@ export function mapCharactersToDTO(rawData: any): CharactersDTO[] {
         id: char.id,
         name: char.name,
         status: char.status,
-        species: char.species
+        species: char.species,
+        image: char.image,
+        episode: char.episode,
     }));
 }

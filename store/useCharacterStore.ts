@@ -7,6 +7,7 @@ interface Character {
   id: number;
   name: string;
   episode?: any[]; //to-do: cambiar a plural
+  image: string;
 }
 
 interface SelectedCharacters {

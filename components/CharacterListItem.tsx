@@ -1,14 +1,12 @@
 'use client';
 
-import Pagination from "./Pagination";
+import CharacterCard from "./CharacterCard";
 import { CharactersDTO } from "@/mappers/charactersMapper";
-//TO-DO: COMPONETIZAR EL MAP
-//TO-DO: SACAR LOS ANYS DE TODOS LADOS
+import { List, ListContent, ListPagination, ListTitle } from "./ui/list";
 
 interface CharacterListItemProps {
     onSelectCharacter: (character: CharactersDTO) => void;
     title: string;
-    bgColor?: string;
     data: { info: any; results: CharactersDTO[] };
     loading: boolean;
     page: number; 
@@ -21,7 +19,6 @@ interface CharacterListItemProps {
 
 export default function CharacterListItem({
     title,
-    bgColor = 'bg-white',
     onSelectCharacter,
     data,
     loading,
@@ -45,28 +42,20 @@ export default function CharacterListItem({
         isLoading: loading,
     };
 
-    return (
-    <div className="flex flex-col gap-4">
-      <Pagination {...paginationData} />
-      <h2 className="text-xl font-bold text-white">{title}</h2>
-      <div className="grid gap-4">
-        {loading ? (
-          <div className="text-white">Cargando...</div>
-        ) : (
-          results?.map((character: CharactersDTO, index: number) => (
-            <div
-              key={character.id}
-              className={`h-[150px] w-[300px] cursor-pointer p-3 text-black transition ${bgColor}`}
-              onClick={() => onSelectCharacter(character)}
-            >
-              <p className="font-bold">Name: {character.name}</p>
-              <p>Numero: {index + 1}</p>
-              <p>Status: {character.status}</p>
-              <p>Species: {character.species}</p>
-            </div>
-          ))
-        )}
-      </div>
-    </div>
-    )
+
+  return (
+    <List>
+      <ListTitle title={title}/>
+      <ListContent  className="grid-cols-2 xl:grid-cols-3">
+        {results?.map((character: any) => (
+          <CharacterCard
+            key={character.id}
+            character={character}
+            onSelect={onSelectCharacter}
+          />
+        ))}
+      </ListContent>
+      <ListPagination {...paginationData} />
+    </List>
+  )
 }
