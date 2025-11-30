@@ -1,45 +1,38 @@
 'use client';
 
-import { useEffect, useState } from 'react';
-import { useCharacterStore } from '@/store/useCharacterStore';
-import { extractEpisodeIds, findSharedEpisodeUrls } from '@/services/episodes';
+import { useShareEpisodesFacade } from '@/hooks/useShareEpisodesFacade';
+import Pagination from './Pagination';
 
-export default function ShareEpisodesList() {
-  const { selectedCharacters } = useCharacterStore();
-  const { character1, character2 } = selectedCharacters;
-  const [sharedEpisodes, setSharedEpisodes] = useState<any[]>([]);
+export default function ShareEpisodesList({ character1, character2 }: any) {
 
-  useEffect(() => {
-    if (!character1 || !character2) {
-      setSharedEpisodes([]);
-      return;
-    }
-    const fetchSharedEpisodes = async () => {
-      try {
-        const sharedUrls = findSharedEpisodeUrls(character1.episode, character2.episode);
 
-        if (sharedUrls.length === 0) {
-          setSharedEpisodes([]);
-          return;
-        }
-        const ids = extractEpisodeIds(sharedUrls);
+  //TO-DO: HACER ALGO CON totalSharedEpisodes
+  //TO-DO CREAR OTRO COMPONENTE DONDE LE PASEN TODOS LOS DATOS
 
-        const response = await fetch('/api/episodes', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({ ids }),
-        });
-        const data = await response.json();
-        setSharedEpisodes(data);
-      } catch (error) {
-        console.error('Error fetching shared episodes:', error);
-      }
-    };
+  const facade = useShareEpisodesFacade(character1, character2);
+  const { 
+    data: sharedEpisodes, 
+    loading,
+    page,
+    totalPages,
+    totalSharedEpisodes,
+    hasPrev,
+    hasNext,
+    next,
+    prev
+  } = facade;
 
-    fetchSharedEpisodes();
-  }, [character1, character2]);
+  const paginationData = {
+    currentPage: page,
+    totalPages,
+    hasPrev,
+    hasNext,
+    onPrevClick: prev,
+    onNextClick: next,
+    isLoading: loading,
+  }
+
+  console.log('data de totalSharedEpisodes', totalSharedEpisodes);
 
   return (
     <div>
@@ -51,6 +44,7 @@ export default function ShareEpisodesList() {
           </li>
         ))}
       </ul>
+      <Pagination {...paginationData} />
     </div>
   );
 }

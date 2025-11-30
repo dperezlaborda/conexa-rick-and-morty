@@ -11,6 +11,8 @@ export function useEpisodesFacade(character: any){
     const totalPages = character?.episode 
         ? getTotalPages(character.episode.length, 10) 
         : 0;
+    
+    const totalEpisodes = character?.episode?.length || 0;
 
     // Cuando cambia el personaje, reseteamos página y data
     // useEffect(() => {
@@ -50,6 +52,7 @@ export function useEpisodesFacade(character: any){
         loading,
         page,
         totalPages,
+        totalEpisodes,
         hasPrev: page > 1,
         hasNext: totalPages > 0 && page < totalPages,
         next: () => setPage(p => p + 1),

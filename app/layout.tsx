@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import { Geist, Geist_Mono } from 'next/font/google';
 import './globals.css';
 
-//base del proyecto del lado del servidor
+//to-do: ver que hacer base del proyecto del lado del servidor
 //LAYOUT BASE
 
 const geistSans = Geist({

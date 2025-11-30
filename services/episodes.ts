@@ -1,6 +1,5 @@
 import { RICK_AND_MORTY_BASE_URL } from '@/constants/api';
 
-//esto es solo el metodo de fetch no esta de ningun lado...
 export async function getEpisodes(ids: any) {
   const response = await fetch(`${RICK_AND_MORTY_BASE_URL}/episode/${ids}`);
 

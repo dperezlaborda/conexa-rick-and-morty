@@ -1,13 +1,15 @@
 'use client';
 
 import Pagination from "./Pagination";
+import { CharactersDTO } from "@/mappers/charactersMapper";
 //TO-DO: COMPONETIZAR EL MAP
+//TO-DO: SACAR LOS ANYS DE TODOS LADOS
 
 interface CharacterListItemProps {
-    onSelectCharacter: (character: any) => void;
+    onSelectCharacter: (character: CharactersDTO) => void;
     title: string;
     bgColor?: string;
-    data: any;
+    data: { info: any; results: CharactersDTO[] };
     loading: boolean;
     page: number; 
     totalPages: number;
@@ -43,7 +45,6 @@ export default function CharacterListItem({
         isLoading: loading,
     };
 
-
     return (
     <div className="flex flex-col gap-4">
       <Pagination {...paginationData} />
@@ -52,7 +53,7 @@ export default function CharacterListItem({
         {loading ? (
           <div className="text-white">Cargando...</div>
         ) : (
-          results?.map((character: any, index: number) => (
+          results?.map((character: CharactersDTO, index: number) => (
             <div
               key={character.id}
               className={`h-[150px] w-[300px] cursor-pointer p-3 text-black transition ${bgColor}`}

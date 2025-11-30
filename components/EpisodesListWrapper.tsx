@@ -12,7 +12,7 @@ export function EpisodesListWrapper() {
     <div className="flex gap-2 p-4">
       <EpisodesList character={character1} />
       <EpisodesList character={character2} />
-      <ShareEpisodesList />
+      <ShareEpisodesList character1={character1} character2={character2} />
     </div>
   );
 }
