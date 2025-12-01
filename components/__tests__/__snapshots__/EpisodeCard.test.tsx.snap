@@ -3,7 +3,7 @@
 exports[`EpisodeCard Component > renders episode details correctly 1`] = `
 <div>
   <div
-    class="group relative overflow-hidden rounded-xl bg-white/5 backdrop-blur-md border border-[#8ED959]/20 shadow-[0_8px_32px_0_rgba(142,217,89,0.1)] soyHorizontal w-full"
+    class="group relative overflow-hidden rounded-xl bg-white/5 backdrop-blur-md border border-[#8ED959]/20 shadow-[0_8px_32px_0_rgba(142,217,89,0.1)] w-full"
   >
     <div
       class="relative z-10"

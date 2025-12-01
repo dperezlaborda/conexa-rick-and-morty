@@ -58,7 +58,7 @@ export default function CharacterListItem({
   return (
     <List>
       <ListTitle title={title} />
-      <ListContent loading={loading} variant="characters" className="grid-cols-2 xl:grid-cols-3">
+      <ListContent loading={loading} className="min-[510px]:grid-cols-2 xl:grid-cols-3">
         {results?.map((character: CharactersDTO) => (
           <CharacterCard
             key={character.id}

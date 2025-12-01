@@ -20,7 +20,7 @@ export default function CharacterCard({
     >
       <CardImage width={200} height={200} src={character.image} alt={character.name} />
       <CardTitle className="text-base text-white">{character.name}</CardTitle>
-      <CardContent className="px-4">
+      <CardContent className="px-4 pb-2">
         <CardBadge variant={character.status}>{character.status}</CardBadge>
         <p>Specie: {character.species}</p>
       </CardContent>

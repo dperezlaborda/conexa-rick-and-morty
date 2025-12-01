@@ -6,10 +6,10 @@ export const cardVariants = cva(
     variants: {
       variant: {
         default: '',
-        horizontal: 'soyHorizontal',
+        horizontal: '',
       },
       size: {
-        default: 'xl:w-[180px] 2xl:w-full h-[400px]',
+        default: 'xl:w-[180px] 2xl:w-full h-full w-full',
         sm: 'w-full',
       },
       clickable: {
