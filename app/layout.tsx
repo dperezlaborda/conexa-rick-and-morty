@@ -1,14 +1,14 @@
 import type { Metadata } from 'next';
 import { Montserrat } from 'next/font/google';
 import './globals.css';
-
+import { MortyIcon, RickIcon } from '@/components/icons';
 
 //TO-DO: COMPONETIZAR HEADER
 //TO-DO: COMPONETIZAR FOOTER
 
 const montserrat = Montserrat({
   subsets: ['latin'],
-  weight: ['300', '400', '500', '600', '700'], // ✅ Pesos que necesites
+  weight: ['300', '400', '500', '600', '700'],
   variable: '--font-montserrat',
 });
 
@@ -25,24 +25,26 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${montserrat.variable} antialiased`}>
-        <header className="sticky top-0 z-50 backdrop-blur-lg bg-black/40 border-b border-white/20 shadow-xl">
+        <header className="sticky top-0 z-50 border-b border-white/20 bg-black/40 shadow-xl backdrop-blur-lg">
           <div className="container mx-auto flex items-center justify-between px-6 py-4">
             <div className="flex items-center gap-3">
-              <h1 className="text-1xl font-bold text-white drop-shadow-lg">
+              <MortyIcon width={40} height={40} className="hidden md:block" />
+              <h1 className="text-base font-bold text-white drop-shadow-lg md:text-xl">
                 Rick y Morty: Portal Interdimensional
               </h1>
             </div>
-            <nav className="flex gap-6">
-              <a 
-                href="/" 
-                className="text-white hover:text-green-400 transition-colors duration-200 font-medium"
+            <nav className="flex w-[200px] items-center gap-6 text-xs md:text-xl lg:w-[250px]">
+              <RickIcon width={40} height={40} className="hidden md:block" />
+              <a
+                href="/"
+                className="font-medium text-white transition-colors duration-200 hover:text-green-400"
               >
                 Home
               </a>
-              <a 
-                href="https://rickandmortyapi.com/documentation" 
+              <a
+                href="https://rickandmortyapi.com/documentation"
                 target="_blank"
-                className="text-white hover:text-green-400 transition-colors duration-200 font-medium"
+                className="font-medium text-white transition-colors duration-200 hover:text-green-400"
               >
                 API Docs
               </a>
@@ -50,9 +52,7 @@ export default function RootLayout({
           </div>
         </header>
 
-        <main className="min-h-screen bg-(--background) p-6">
-          {children}
-        </main>
+        <main className="min-h-screen bg-(--background) p-6">{children}</main>
 
         <footer className="border-t border-white/20 text-white">
           <div className="container mx-auto px-6 py-6">
@@ -61,16 +61,16 @@ export default function RootLayout({
                 © 2024 Rick and Morty Explorer. Built with Next.js 15
               </p>
               <div className="flex gap-4">
-                <a 
-                  href="https://github.com/dperezlaborda/conexa-rick-and-morty" 
+                <a
+                  href="https://github.com/dperezlaborda/conexa-rick-and-morty"
                   target="_blank"
                   className="text-gray-400 hover:text-white"
                   title="View source on GitHub"
                 >
                   GitHub
                 </a>
-                <a 
-                  href="https://rickandmortyapi.com" 
+                <a
+                  href="https://rickandmortyapi.com"
                   target="_blank"
                   className="text-gray-400 hover:text-white"
                   title="Rick and Morty API"

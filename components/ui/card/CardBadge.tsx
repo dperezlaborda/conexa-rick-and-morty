@@ -14,7 +14,7 @@ export function CardBadge({ children, variant = 'info', className = '' }: CardBa
     info: 'bg-blue-500/20 text-blue-300 border-blue-500/50',
   };
 
-//TO-DO: AGREGAR CVA 
+//TO-DO: AGREGAR CVA A BADGE
 
   return (
     <span className={`inline-block px-2 py-1 text-xs font-semibold rounded border ${variants[variant]} ${className}`}>
