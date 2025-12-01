@@ -8,14 +8,14 @@ Aplicación Next.js 15 para comparar personajes de Rick and Morty, ver episodios
 
 ## Tecnologías y Patrones
 
-| Tecnología                         | Uso                   | Por qué                                        |
-| ---------------------------------- | --------------------- | ---------------------------------------------- |
-| **Next.js 15**                     | Framework principal   | App Router, Server Components, TypeScript      |
-| **Zustand**                        | Estado global         | Manejo de personajes seleccionados y filtros   |
-| **CVA** (Class Variance Authority) | Estilos con variantes | Sistema de diseño consistente y tipado         |
-| **Tailwind CSS**                   | Styling               | Utility-first CSS con breakpoints responsive   |
-| **Vitest**                         | Testing               | Más rápido que Jest, compatible con TypeScript |
-| **TypeScript**                     | Tipado estático       | Sin `any`, tipos completos en toda la app      |
+| Tecnología                         | Uso                   | Por qué                                      |
+| ---------------------------------- | --------------------- | -------------------------------------------- |
+| **Next.js 16**                     | Framework principal   | App Router, Server Components, TypeScript    |
+| **Zustand**                        | Estado global         | Manejo de personajes seleccionados y filtros |
+| **CVA** (Class Variance Authority) | Estilos con variantes | Sistema de diseño consistente y tipado       |
+| **Tailwind CSS**                   | Styling               | Utility-first CSS con breakpoints responsive |
+| **Vitest**                         | Testing               | Compatible con TypeScript                    |
+| **TypeScript**                     | Tipado estático       | Sin `any`, tipos completos en toda la app    |
 
 ## Arquitectura de Mappers
 
