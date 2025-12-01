@@ -1,6 +1,6 @@
 import { RICK_AND_MORTY_BASE_URL } from '@/constants/api';
 
-export async function getEpisodes(ids: number | number[]) {
+export async function getEpisodes(ids: unknown) {
   console.log('Fetching episodes with ids:', ids);
 
   const response = await fetch(`${RICK_AND_MORTY_BASE_URL}/episode/${ids}`);
