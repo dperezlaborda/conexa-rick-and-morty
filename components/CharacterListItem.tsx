@@ -56,7 +56,7 @@ export default function CharacterListItem({
   return (
     <List>
       <ListTitle title={title} />
-      <ListContent loading={loading} className="grid-cols-2 xl:grid-cols-3">
+      <ListContent loading={loading} variant="characters" className="grid-cols-2 xl:grid-cols-3">
         {results?.map((character: any) => (
           <CharacterCard
             key={character.id}

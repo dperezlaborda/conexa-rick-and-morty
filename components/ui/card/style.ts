@@ -24,3 +24,13 @@ export const cardVariants = cva(
     },
   }
 );
+
+export const cardBadgeVariants = cva('border rounded-lg px-2 capitalize', {
+  variants: {
+    variant: {
+      alive: 'bg-green-500/20 text-green-300 border-green-500/50',
+      dead: 'bg-yellow-500/20 text-yellow-300 border-yellow-500/50',
+      unknown: 'bg-gray-500/20 text-gray-300 border-gray-500/50',
+    },
+  },
+});

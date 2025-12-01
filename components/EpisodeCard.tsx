@@ -1,20 +1,23 @@
-import { Card, CardContent, CardTitle } from "./ui/card";
+import { Card, CardContent, CardTitle } from './ui/card';
 
-export default function EpisodeCard({ episodeName, episodeAirDate, episodeId }: { episodeName: string; episodeAirDate: string; episodeId: string; }) {
-
-    return (
-        <Card 
-            variant='horizontal'
-            size='sm'
-            clickable={false}
-        >
-            <CardTitle className="text-[#1E591C] mt-2">{episodeName}</CardTitle>
-            <CardContent className="px-4 mb-2">
-                <div className="flex gap-5">
-                    <p>{episodeId}#</p>
-                    <p>Air date: {episodeAirDate}</p>
-                </div>
-            </CardContent>
-        </Card>
-    );
+export default function EpisodeCard({
+  episodeName,
+  episodeAirDate,
+  episodeId,
+}: {
+  episodeName: string;
+  episodeAirDate: string;
+  episodeId: string;
+}) {
+  return (
+    <Card variant="horizontal" size="sm" clickable={false}>
+      <CardTitle className="mt-2 text-base text-[#1E591C]">{episodeName}</CardTitle>
+      <CardContent className="mb-2 px-4">
+        <div className="flex gap-5">
+          <p>{episodeId}#</p>
+          <p>Air date: {episodeAirDate}</p>
+        </div>
+      </CardContent>
+    </Card>
+  );
 }

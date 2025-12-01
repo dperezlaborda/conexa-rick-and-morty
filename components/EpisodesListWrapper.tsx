@@ -11,34 +11,29 @@ export default function EpisodesListWrapper() {
 
   const character1EpisodesData = useEpisodesFacade(character1);
   const character2EpisodesData = useEpisodesFacade(character2);
-  const {noData, ...sharedEpisodesData} = useShareEpisodesFacade(character1, character2);
+  const { noData, ...sharedEpisodesData } = useShareEpisodesFacade(character1, character2);
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols-3 gap-4 min-h-[365px]">
+    <div className="grid min-h-[365px] grid-cols-1 gap-4 xl:grid-cols-3">
       <EpisodeListItem
-        emptyMessage="Selecciona un personaje para ver sus episodios" 
-        characterName={character1?.name} 
+        emptyMessage="Selecciona un personaje para ver sus episodios"
+        characterName={character1?.name}
         {...character1EpisodesData}
       />
       <EpisodeListItem
         isSharedEpisodes={true}
-        emptyMessage={
-          noData || "Selecciona 2 personajes para ver sus episodios compartidos"
-        }
+        emptyMessage={noData || 'Selecciona 2 personajes para ver sus episodios compartidos'}
         characterName={
-          character1 && character2 
-            ? `${character1.name} & ${character2.name}` 
-            : undefined
+          character1 && character2 ? `${character1.name} & ${character2.name}` : undefined
         }
         totalEpisodes={sharedEpisodesData?.totalSharedEpisodes}
         {...sharedEpisodesData}
       />
-      <EpisodeListItem 
+      <EpisodeListItem
         emptyMessage="Selecciona un personaje para ver sus episodios"
-        characterName={character2?.name} 
-        {...character2EpisodesData} 
+        characterName={character2?.name}
+        {...character2EpisodesData}
       />
-
     </div>
   );
 }
