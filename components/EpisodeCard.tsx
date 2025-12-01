@@ -7,7 +7,7 @@ export default function EpisodeCard({
 }: {
   episodeName: string;
   episodeAirDate: string;
-  episodeId: string;
+  episodeId: number;
 }) {
   return (
     <Card variant="horizontal" size="sm" clickable={false}>

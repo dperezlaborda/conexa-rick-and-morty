@@ -58,7 +58,7 @@ export default function EpisodeListItem({
       <ListTitle title={title} subtitle={subtitle} />
       <div className="h-full">
         <ListContent loading={loading} emptyMessage={emptyMessage} variant="episodes">
-          {data?.map((ep: any) => (
+          {data?.map((ep: EpisodeDTO) => (
             <EpisodeCard
               key={ep.id}
               episodeName={ep.name}

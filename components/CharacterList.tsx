@@ -3,8 +3,9 @@
 import { useCharacterStore } from '@/store/useCharacterStore';
 import CharacterListItem from './CharacterListItem';
 import { useCharacterLists } from '@/hooks/useCharacterLists';
+import { MappedCharacterResponse } from '@/types/api';
 
-export default function CharacterList({ initialData }: { initialData: any }) {
+export default function CharacterList({ initialData }: { initialData: MappedCharacterResponse }) {
   const lists = useCharacterLists(initialData);
   const { selectedCharacters } = useCharacterStore();
 

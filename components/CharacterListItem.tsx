@@ -4,13 +4,15 @@ import CharacterCard from './CharacterCard';
 import { CharactersDTO } from '@/mappers/charactersMapper';
 import { List, ListContent, ListPagination, ListTitle } from './ui/list';
 import { useCallback } from 'react';
+import { APIInfo } from '@/types/api';
+import { Character } from '@/store/useCharacterStore';
 
 interface CharacterListItemProps {
   onSelectCharacter: (character: CharactersDTO) => void;
   selectedCharacterId?: number;
   otherSelectedCharacterId?: number;
   title: string;
-  data: { info: any; results: CharactersDTO[] };
+  data: { info: APIInfo; results: CharactersDTO[] };
   loading: boolean;
   page: number;
   totalPages: number;
@@ -57,7 +59,7 @@ export default function CharacterListItem({
     <List>
       <ListTitle title={title} />
       <ListContent loading={loading} variant="characters" className="grid-cols-2 xl:grid-cols-3">
-        {results?.map((character: any) => (
+        {results?.map((character: CharactersDTO) => (
           <CharacterCard
             key={character.id}
             character={character}

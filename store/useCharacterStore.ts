@@ -1,9 +1,9 @@
 import { create } from 'zustand';
 
-interface Character {
+export interface Character {
   id: number;
   name: string;
-  episode?: any[]; //to-do:remove any
+  episode?: string[];
   image: string;
 }
 
