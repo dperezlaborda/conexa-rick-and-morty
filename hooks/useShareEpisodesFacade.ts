@@ -9,7 +9,7 @@ import { PAGE_SIZE } from '@/constants/api';
 import { Character } from '@/store/useCharacterStore';
 import { EpisodeDTO } from '@/mappers/episodesMapper';
 
-export function useShareEpisodesFacade(character1: Character, character2: Character) {
+export function useShareEpisodesFacade(character1: Character | null, character2: Character | null) {
   const [data, setData] = useState<EpisodeDTO[]>([]);
   const [page, setPage] = useState(1);
   const [loading, setLoading] = useState(false);

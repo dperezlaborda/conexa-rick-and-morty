@@ -24,10 +24,10 @@ exports[`CharacterCard Component > renders character details correctly 1`] = `
           width="200"
         />
         <div
-          class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent"
+          class="absolute inset-0 bg-linear-to-t from-black/70 via-black/30 to-transparent"
         />
         <div
-          class="absolute inset-0 bg-gradient-to-t from-[#8ED959]/20 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+          class="absolute inset-0 bg-linear-to-t from-[#8ED959]/20 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100"
         />
       </div>
       <h3
@@ -77,10 +77,10 @@ exports[`CharacterCard Component > renders with isSelected true 1`] = `
           width="200"
         />
         <div
-          class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent"
+          class="absolute inset-0 bg-linear-to-t from-black/70 via-black/30 to-transparent"
         />
         <div
-          class="absolute inset-0 bg-gradient-to-t from-[#8ED959]/20 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+          class="absolute inset-0 bg-linear-to-t from-[#8ED959]/20 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100"
         />
       </div>
       <h3
