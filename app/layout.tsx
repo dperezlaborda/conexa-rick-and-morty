@@ -3,9 +3,6 @@ import { Montserrat } from 'next/font/google';
 import './globals.css';
 import { MortyIcon, RickIcon } from '@/components/icons';
 
-//TO-DO: COMPONETIZAR HEADER
-//TO-DO: COMPONETIZAR FOOTER
-
 const montserrat = Montserrat({
   subsets: ['latin'],
   weight: ['300', '400', '500', '600', '700'],
@@ -52,7 +49,7 @@ export default function RootLayout({
           </div>
         </header>
 
-        <main className="min-h-screen bg-(--background) p-6">{children}</main>
+        <main className="bg-background min-h-screen p-6">{children}</main>
 
         <footer className="border-t border-white/20 text-white">
           <div className="container mx-auto px-6 py-6">

@@ -1,0 +1,35 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`EpisodeCard Component > renders episode details correctly 1`] = `
+<div>
+  <div
+    class="group relative overflow-hidden rounded-xl bg-white/5 backdrop-blur-md border border-[#8ED959]/20 shadow-[0_8px_32px_0_rgba(142,217,89,0.1)] soyHorizontal w-full"
+  >
+    <div
+      class="relative z-10"
+    >
+      <h3
+        class="mb-2 px-4 font-semibold mt-2 text-base text-[#1E591C]"
+      >
+        Pilot
+      </h3>
+      <div
+        class="mb-2 px-4"
+      >
+        <div
+          class="flex gap-5"
+        >
+          <p>
+            1
+            #
+          </p>
+          <p>
+            Air date: 
+            December 2, 2013
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
